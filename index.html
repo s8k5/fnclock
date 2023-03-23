@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+ body{
+    user-select: none;
+    overflow: hidden;
+    font-family: 'Noto Sans',sans-serif;
+    background-color: #f4f4f4;
+    zoom:150%;
+ }
+   
+    .box{
+border: 2px solid none;
+width: 100%;
+height: 200px;
+margin-top: 15%;
+display: flex;
+flex-direction: column;
+    }
+    #box1{
+        padding: 20px 10px 10px 20px;
+        width: 330px;
+        height: 230px;
+        margin-left: auto;
+        position: relative;
+        top: -230px;
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+        opacity: 0.9;
+        color: #888888;
+        visibility: hidden;
+    }
+    #box2{
+        border: 2px solid none;
+        width: 25px;
+        height: 25px;
+        margin-left: 96%;
+        position: relative;
+        bottom: 190px;
+    }
+
+    .clock{
+        border: 2px solid none;
+        margin: auto auto 1px auto;
+        font-size: 84px;
+        display: flex;
+        flex-direction: row;
+    }
+    .clock1{
+        border: 2px solid none;
+        margin: 1px auto auto auto;
+        font-size: 54px;
+        display: flex;
+        flex-direction: row;
+    }
+    .b1{
+        width: 60%;
+        height: 86%;
+        border: 2px solid none;
+    }
+    .bb1{
+        border: 2px solid none;
+        width: 100%;
+       height: 19%;
+    }
+    .b2{
+        width: 40%;
+        height: 87%;
+        border: 2px solid none;
+    }
+.btd{
+    display: flex;
+    flex-direction: row;
+    font-size: 75%;
+}
+.type{
+    padding: 4px 4px 4px 4px ;
+    color: #555555;
+}
+.td{
+padding: 0px 2px 0px 2px;
+border-radius: 2px;
+margin: 0% 1% 0% 1%;
+}
+#mage{
+   display: none;
+}
+.td{
+    color: #888888;
+    opacity: 0.5;
+}
+.dot3{
+    border: 2px solid #555555;
+    border-radius: 100%;
+    width: 2px;
+    height: 2px;
+    margin: 1px auto 2px auto;
+    background-color: #555555;
+  
+}
+.dot{
+    border-radius: 10%;
+    padding: 2px;
+    width: 25px;
+    height: 25px;
+}
+.dot:hover{
+    background-color: #888888;
+    opacity: 0.3;
+}
+</style>
+<body id="body" onload="time()">
+    <div class="contener">
+        <div class="box">
+            <div class="clock"><div id="h">12</div><div id="h24" style="display: none;"></div> :<div id="m">:45</div>:<div id="s"> :01</div><div id="am" style="display: none;"> PM</div></div>
+            <div class="clock1"><div id="day"></div><div id="day1" style="display:none"></div><div id="month1">Mar</div><div id="month2" style="display: none;"></div> <div id="date">23</div><div id="dsl1">/</div> <div id="month">03</div><div id="dsl">/</div><div id="year" style="display: none;">2023</div><div id="year1"></div> </div>
+        </div>
+        <div id="box1">
+            <div class="b1">
+                <div class="bb1">
+                    <div class="type">Theme</div>
+                    <div class="btd">
+                    <div class="td" id="1" onclick="system()">System</div>
+                    <div class="td" id="11" onclick="light()">Light</div>
+                    <div class="td" id="111" onclick="dark()">Dark</div>
+                    <div class="td" id="1111" onclick="bing()">Bingimage</div>    
+                    
+                    </div>
+                </div>
+                <div class="bb1">
+                    <div class="type">Seconds</div>
+                    <div class="btd">
+                    <div class="td" id="2" onclick="hide()">Hide</div>
+                    <div class="td" id="22" onclick="show()">Show</div>
+                    </div>
+                </div>
+                <div class="bb1">
+                    <div class="type">Hours</div>
+                    <div class="btd">
+                    <div class="td" id="3" onclick="h24()">24</div>
+                    <div class="td" id="33" onclick="h12()">12</div>
+                    <div class="td" id="333" onclick="ham()">12AM/PM</div>
+                    </div>
+                </div>
+                <div class="bb1">
+                    <div class="type">Date</div>
+                    <div class="btd">
+                    <div class="td" id="4" onclick="dh()">Hide</div>
+                    <div class="td" id="44" onclick="d()">D</div>
+                    <div class="td" id="444" onclick="dm()">DD/MM</div>
+                    </div>
+                </div>
+                <div class="bb1">
+                    <div class="type">Day</div>
+                    <div class="btd">
+                    <div class="td" id="5" onclick="dayshort()">Short</div>
+                    <div class="td" id="55" onclick="dayfull()">Full</div>
+                    <div class="td" id="555" onclick="dayhide()">Hide</div>
+                    </div>
+                </div>
+            </div>
+            <div class="b2">
+                <div class="bb1">
+                    <div class="type">Month</div>
+                    <div class="btd">
+                    <div class="td" id="6" onclick="monshort()">Short</div>
+                    <div class="td" id="66" onclick="monfull()">Full</div>
+                    <div class="td" id="666" onclick="monhide()">Hide</div>
+                    </div>
+                </div>
+                <div class="bb1">
+                    <div class="type">Year</div>
+                    <div class="btd">
+                    <div class="td" id="7" onclick="year()">Short</div>
+                    <div class="td" id="77" onclick="year1()">Full</div>
+                    <div class="td" id="777" onclick="yearhide()">Hide</div>
+                    </div>
+                </div>
+                <div id="mage">
+                <div class="bb1">
+                    <div class="type">Image Description</div>
+                    <div class="btd">
+                    <div class="td">Show</div>
+                    <div class="td">Hide</div>
+                    </div>
+                </div>
+                <div class="bb1">
+                    <div class="type">Image Effect</div>
+                    <div class="btd">
+                    <div class="td">Normal</div>
+                    <div class="td">Blur</div>
+                    <div class="td">Darken</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        </div>
+        <div id="box2" onclick="hsb()">
+            <div class="dot" id="dot1">
+            <div class="dot3"></div>
+            <div class="dot3"></div>
+            <div class="dot3"></div>
+        </div>
+        </div>
+    </div>
+    <script>
+        let x =document.getElementById("box1");
+        function hsb(){
+            if(x.style.visibility == "visible"){
+                x.style.visibility = "hidden"
+            }else{
+                x.style.visibility = "visible"
+            }
+        }
+    </script>
+    <script src="index.js"></script>
+</body>
+</html>
